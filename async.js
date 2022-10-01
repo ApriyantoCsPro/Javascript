@@ -1,33 +1,33 @@
-//Syncronous Callback (Sebuah function yang parameternya adalah function)
+//Synchronous contoh =
 
-// contoh1
-// function tampilPesan(Callback) {
-//     const nama = prompt("Masukan nama :")
-//     Callback(nama)
-// }
-// tampilPesan(nama => alert(`Halo ${nama}`))
+// const getUserSync = ( id ) => {
+//     const nama = id === 1 ? ' Apri ' : ' Yanto ' ;
+//     return { id , nama } ;
+//   } ;
+//   const userSatu = getUserSync ( 1 ) ;
+//   console.log ( userSatu ) ;
+//   const userDua = getUserSync ( 2 ) ;
+//   console.log ( userDua ) ;
+//   const halo = ' Hello World ! ' ;
+//   console.log ( halo ) ;
+//--------------------------------------------------------------------------------
 
-// contoh2
-// const mhs = [
-//     {
-//         nama: "Apri",
-//         umur: 20
-//     },
-//     {
-//         nama: "Yanto",
-//         umur: 21
-//     },
-//     {
-//         nama: "Abdul Karim Syamil",
-//         umur: 22
-//     }
-// ]
+//Asynchronous contoh =
 
-// console.log("Mulai")
-// mhs.forEach(m => {
-//     for (let i = 0; i < 10000000; i++) {
-//         let date = new Date()
-//     }
-//     console.log(m.nama)
-// })
-// console.log("Selesai")  //Ini tidak akan di proses sampai loop nya selesai
+const getUser = ( id, cb ) => {
+    const time = id == 1 ? 3000 : 2000
+    setTimeout(() => {
+        const nama = id === 1 ? ' Apri ' : ' Yanto ' ;
+        cb({id, nama})
+    }, time)
+  } ;
+  const userSatu = getUser ( 1, (hasil) => {
+    console.log ( hasil ) ;
+  } ) ;
+  const userDua = getUser ( 2, (hasil) => {
+      console.log ( hasil ) ; 
+  }) ;
+  const halo = ' Hello World ! ' ;
+  console.log ( halo ) ;
+
+
